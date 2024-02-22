@@ -23,10 +23,10 @@
     </div>
     <div class="game-info">
       <h2 v-if="!this.gameOver">
-        Round: <span>{{ this.score }}</span>
+        Round: <span>{{ score }}</span>
       </h2>
       <h3 class="game-info" v-else-if="this.gameOver">
-        Вы смогли продержаться <span>{{ this.score }}</span> раундов!
+        Вы смогли продержаться <span>{{ score }}</span> раундов!
       </h3>
       <button data-action="start" @click="startSimon">{{ buttonStart }}</button>
     </div>
@@ -80,6 +80,7 @@ export default {
         this.indexUser = 0;
         this.gameOver = false;
         this.startGame();
+        
       } else {
         this.resetGame();
       }
@@ -91,6 +92,7 @@ export default {
     startGame() {
       this.sequence = [];
       this.playSequence();
+      
     },
     playSequence() {
       setTimeout(() => {
@@ -134,6 +136,7 @@ export default {
       setTimeout(() => {
         button.classList.remove("lit");
       }, 300);
+      
       this.playColorSound(value);
       this.userSequence.push(value);
 
@@ -149,7 +152,6 @@ export default {
           this.buttonStart = "Restart";
           this.sequence = [];
           this.userSequence = [];
-          this.score = 0;
           this.playing = false;
         }
       }
@@ -176,7 +178,6 @@ export default {
       this.buttonStart = "Start";
       this.sequence = [];
       this.userSequence = [];
-      this.score = 0;
       this.gameOver = false;
     },
   },
